@@ -1,0 +1,39 @@
+{
+    "app-name": "fe-wechat-be-development",
+    "port": 8001,
+    "db": "mongodb://test-fe_hfs_op_write:AeykJ2ORO43lvKwf@10.10.14.253:6010/test-fe_hfs_op",
+    "redis": {
+        "host": "127.0.0.1",
+        "port": "6379",
+        "db": "1"
+    },
+    "whiteOrigin": "*.yunxiao.com",
+    "wechatOfficialPages": "https://hfs-wechat.yunxiao.com/test/redirectPage?url=${url}&yunxiaoWechatMsgId=${yunxiaoWechatMsgId}",
+    "jwt": {
+        "algorithm": "HS256",
+        "privateKey": "fe-wechat"
+    },
+    "mq": {
+        "connection": {
+            "protocol": "amqp",
+            "hostname": "172.17.0.82",
+            "port": 5672,
+            "username": "admin",
+            "password": "iyunxiao.com",
+            "heartbeat": 30,
+            "vhost": "/hfs_op"
+        },
+        "serv": {
+            "queues": [
+                {
+                    "exchangeName": "exchange.direct.wechat.message.wxcallback",
+                    "exchangeType": "direct",
+                    "queueName": "queue.wechat.message.wxcallback",
+                    "routeKey": "route.wechat.message.wxcallback",
+                    "pushFunName": "sendMsgToWxCallBackQ",
+                    "consumerCount": 1
+                }
+            ]
+        }
+    }
+}

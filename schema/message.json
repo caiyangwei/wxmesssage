@@ -1,0 +1,77 @@
+@Business: {
+    businessLine:String, // 业务线代号(hfs)
+    businessLineName:String, // 业务线名称(hfs:好分数)
+    wxMessageSendMax:Integer, // 公众号每天消息推送最大频次
+    appId:String,
+    appSecret:String,
+    redirectUrl:String,
+    getAccessTokenUrl:String,
+    createTime:Now,
+    updateTime:Time
+}
+
+@User: {
+    businessLine:String, //业务线
+    unionId:String, //微信unionid
+    openId:String, // 微信openid
+    userName:String, // 用户名称
+    userId:String, // 用户ID
+    schoolId:Integer, //学校ID
+    schoolName:String, //学校名称
+    grade:String, // 学生年级
+    role:Integer, //身份(1:学生 2:家长)
+    memberStatus:Integer, //会员状态
+    memberExpireTime:Time,
+    wechatExamReportBuyingTime:Integer, //通过微信单次购买的次数
+    appExamReportBuyingTime:Integer, //通过app单次购买的次数
+    activeTime:Time // 最后活跃时间
+}
+
+@WechatMessage: { 
+    businessLine:String, // 业务线类型(hfs:好分数)
+    calcUserCount:Integer, // 计算人数
+    deliveryCount:Integer, // 推送人数
+    viewCount:Integer, // 打开人数
+    viewManTime:Integer, // 打开人次
+    deliveryStatus:Integer, // 发送状态
+    deliveryTime:Time, //发送时间
+    type:Integer, // 消息类型(1:模板消息 2:客服消息)
+    timerStatus:Integer, // 定时发送
+    timerTime:Time, //定时发送
+    msg: {
+        cover:String, // 消息背景图
+        description:String, // 活动方案
+        msgType:String, //活动类型
+        name:String, //活动名称
+        time:Time, //活动时间
+        title:String, // 活动标题
+        url:String //活动链接
+    },
+
+    targetSchoolType:Integer, // 学校接受类型(1:全部 2:黑名单 3:白名单)
+    [targetSchools]:Integer, // 学校列表
+    [grade]:String, // 年级
+    role:Integer, // 接受的角色 (0:全部 1:学生 2:家长)
+    memberStatus:Integer, // 推送的会员类型(0:不限 1:会员 2:非会员)
+    memberExpireTime:Integer, // 会员过期时间
+    wechatExamReportBuyingTime:Integer, //通过微信单次购买的次数
+    appExamReportBuyingTime:Integer, //通过app单次购买的次数
+    prepareDeliveryCount:Integer, // 发送人数
+    isDelete:BOOL; //是否有效
+    createTime:Now,
+    updateTime:Time
+}
+
+@UserMessage: {
+    businessLine:String, // 业务线(hfs:好分数)
+    messageId:String, // 消息题ID
+    messageType:Integer, // 消息类型 (1:模板消息 2:客服消息)
+    wxMsgId:String, // 微信消息ID
+    openId:String, // 用户openid
+    userName:String, // 用户名称
+    deliveryState:Integer, // 发送状态
+    viewCount:Integer, // 用户浏览次数
+    error:String, //失败原因
+    createTime:Now, // 创建时间
+    updateTime:Time // 更新时间
+}

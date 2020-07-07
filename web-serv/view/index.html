@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script>
+        var jq = jQuery.noConflict();
+        jq(function () {
+            console.log('200');
+        })
+
+        jq.ajax({
+            url: 'http://fe-wechat.iyunxiao.net/test/1',
+            method: 'get',
+            data: {},
+            success: (rlt) => {
+                jq('html').html(rlt);
+            },
+            error: () => { }
+        })
+    </script>
+    <title>test redirect</title>
+</header>
+
+<body></body>
+
+</html>

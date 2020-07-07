@@ -1,0 +1,45 @@
+{
+    "app-name": "fe-wechat-be-production",
+    "port": 8001,
+    "db": "mongodb://test-fe_hfs_op_write:AeykJ2ORO43lvKwf@10.10.14.253:6010/test-fe_hfs_op",
+    "redis": {
+        "host": "127.0.0.1",
+        "port": "6379",
+        "db": "1"
+    },
+    "whiteList": [
+        "oms.yunxiao.com",
+        "testoms.yunxiao.com"
+    ],
+    "mq": {
+        "connection": {
+            "protocol": "amqp",
+            "hostname": "127.0.0.1",
+            "port": 5672,
+            "username": "cyw",
+            "password": "123456",
+            "heartbeat": 30,
+            "vhost": "/"
+        },
+        "serv": {
+            "queues": [
+                {
+                    "exchangeName": "exchange.direct.wechat.message",
+                    "exchangeType": "direct",
+                    "queueName": "queue.wechat.message.task.school",
+                    "routeKey": "route.wechat.message.task.school",
+                    "pushFunName": "sendMsgToSchoolQ",
+                    "consumerCount": 2
+                },
+                {
+                    "exchangeName": "exchange.direct.wechat.message",
+                    "exchangeType": "direct",
+                    "queueName": "queue.wechat.message.task.user",
+                    "routeKey": "route.wechat.message.task.user",
+                    "pushFunName": "sendMsgToUserQ",
+                    "consumerCount": 5
+                }
+            ]
+        }
+    }
+}
